@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
-import { Menu as MenuIcon, X, ShoppingBag, Search, User } from 'lucide-react'
+import { Menu as MenuIcon, X, ShoppingBag,  User } from 'lucide-react'
 import { useCart } from '../../context/CartContext'
 
 const Navbar = ({ scrolled }) => {
@@ -62,10 +62,6 @@ const Navbar = ({ scrolled }) => {
 
                     {/* Right Icons */}
                     <div className="flex items-center gap-4">
-                        {/* Search Icon */}
-                        <button className="p-2 hover:bg-sage-50 rounded-full transition-colors duration-200 hidden sm:block">
-                            <Search className="w-5 h-5 text-charcoal-light" />
-                        </button>
 
                         {/* Cart Icon */}
                         <button

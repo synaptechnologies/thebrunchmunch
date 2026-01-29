@@ -51,9 +51,9 @@ const About = () => {
                         <div className="max-w-lg">
                             <p className="text-gold font-medium mb-2 text-lg">About Us</p>
                             <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
-                                <span className="inline-block bg-sage-600/90 px-4 py-1">Passionate about</span>
+                                <span className="inline-block bg-sage-600/90 px-4 py-1 rounded-md">Passionate about</span>
                                 <br />
-                                <span className="inline-block bg-sage-600/90 px-4 py-1 mt-2">great food</span>
+                                <span className="inline-block bg-sage-600/90 px-4 py-1 mt-2 rounded-md">great food</span>
                             </h1>
                             <p className="text-cream-200 text-lg">
                                 Bringing gourmet brunch experiences to Accra, one basket at a time

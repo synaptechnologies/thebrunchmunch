@@ -121,9 +121,9 @@ const Home = () => {
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                         <div className="max-w-xl reveal">
                             <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-                                <span className="inline-block bg-sage-600/90 px-4 py-1 mb-2">Gourmet Brunch,</span>
+                                <span className="inline-block bg-sage-600/90 px-4 py-1 mb-2 rounded-md">Gourmet Brunch,</span>
                                 <br />
-                                <span className="inline-block bg-sage-600/90 px-4 py-1">Delivered to You</span>
+                                <span className="inline-block bg-sage-600/90 px-4 py-1 rounded-md">Delivered to You</span>
                             </h1>
                             <p className="text-xl md:text-2xl text-cream-100 mb-8">
                                 Luxury catering for corporate events, celebrations, and everyday indulgence
@@ -274,9 +274,9 @@ const Home = () => {
                         {events.map((event, index) => (
                             <div
                                 key={event.title}
-                                className={`flex-shrink-0 w-64 bg-cream-100 rounded-xl p-6 hover:shadow-soft-lg transition-all duration-300 card-lift`}
+                                className={`flex-shrink-0 w-64 bg-cream-100 rounded-xl p-6 hover:shadow-soft-lg transition-all duration-300 card-lift h-full flex flex-col`}
                             >
-                                <div className="w-12 h-12 bg-sage-500 text-white rounded-full flex items-center justify-center mb-4">
+                                <div className="w-12 h-12 bg-sage-500 text-white rounded-full flex items-center justify-center mb-4 flex-shrink-0">
                                     {event.icon}
                                 </div>
                                 <h3 className="font-display text-lg font-bold text-charcoal mb-2">
@@ -314,7 +314,7 @@ const Home = () => {
                         {reviews.map((review, index) => (
                             <div
                                 key={review.name}
-                                className={`reveal bg-white rounded-xl p-6 shadow-soft hover:shadow-soft-lg transition-all duration-300 card-lift stagger-${(index % 5) + 1}`}
+                                className={`reveal bg-white rounded-xl p-6 shadow-soft hover:shadow-soft-lg transition-all duration-300 card-lift stagger-${(index % 5) + 1} h-full flex flex-col`}
                             >
                                 {/* Quote Icon */}
                                 <div className="mb-4">
@@ -334,7 +334,7 @@ const Home = () => {
                                 </p>
 
                                 {/* Customer Info */}
-                                <div className="flex items-center gap-3 pt-4 border-t border-gray-light">
+                                <div className="flex items-center gap-3 pt-4 border-t border-gray-light mt-auto">
                                     <img
                                         src={review.image}
                                         alt={review.name}

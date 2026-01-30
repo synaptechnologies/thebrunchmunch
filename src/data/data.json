@@ -1,0 +1,884 @@
+{
+    "brandInfo": {
+        "name": "The Brunch Munch",
+        "phone": "+233 53 045 8727",
+        "phone2": "0545291789",
+        "whatsappLink": "https://wa.me/233530458727",
+        "location": "Haatso, Accra – Ghana",
+        "email": "giftyshan@haatso.com",
+        "instagram": "@the_brunch_munch",
+        "website": "https://thebrunchmunch.com/"
+    },
+    "categories": [
+        {
+            "id": "lunch",
+            "title": "Lunch Menu",
+            "description": "Signature Jollof, fried rice, and gourmet lunch baskets",
+            "image": "/images/lunch.png",
+            "subCategories": [
+                {
+                    "title": "Individual Lunch Plates",
+                    "type": "standard",
+                    "items": [
+                        {
+                            "id": "jollofwithchickensaladblackpeppersauce",
+                            "name": "Jollof with Chicken, Salad, Black Pepper Sauce",
+                            "price": 80.00,
+                            "description": "Classic Jollof rice served with grilled chicken, fresh salad mix, and a side of black pepper sauce.",
+                            "dietary": [
+                                "gluten-free"
+                            ],
+                            "image": "/images/jollofwithchickensaladblackpeppersauce.png"
+                        },
+                        {
+                            "id": "jollofwithplantainandeggchickensaladblackpeppersauce",
+                            "name": "Jollof (with Plantain & Egg), Chicken, Salad, Black Pepper Sauce",
+                            "price": 100.00,
+                            "description": "Classic Jollof rice topped with fried plantain and a boiled egg, served with grilled chicken, fresh salad, and black pepper sauce.",
+                            "dietary": [
+                                "gluten-free"
+                            ],
+                            "image": "/images/jollofwithplantainandeggchickensaladblackpeppersauce.jpg"
+                        },
+                        {
+                            "id": "friedricechickensaladshitoegg",
+                            "name": "Fried Rice, Chicken, Salad, Shito, Egg",
+                            "price": 90.00,
+                            "description": "Ghanaian style fried rice served with chicken, coleslaw, shito, and a boiled egg.",
+                            "dietary": [],
+                            "image": "/images/friedricechickensaladshitoegg.png"
+                        },
+                        {
+                            "id": "spaghettistirfryeggssausagesveggies",
+                            "name": "Spaghetti Stir Fry, Eggs, Sausages, Veggies",
+                            "price": 80.00,
+                            "description": "Stir-fried spaghetti mixed with fresh vegetables, eggs, and sausages.",
+                            "dietary": [],
+                            "image": "/images/spaghettistirfry.png"
+                        },
+                        {
+                            "id": "assortedspaghettistirfryeggssausageschickenbeefveggies",
+                            "name": "Assorted Spaghetti Stir Fry, Eggs, Sausages, Chicken, Beef, Veggies",
+                            "price": 140.00,
+                            "description": "Premium stir-fried spaghetti with eggs, sausages, chicken, beef, and fresh vegetables.",
+                            "dietary": [],
+                            "image": "/images/spaghettistirfry.png"
+                        },
+                        {
+                            "id": "bankutilapiamedium",
+                            "name": "Banku & Tilapia (Medium)",
+                            "price": 150.00,
+                            "description": "Traditional Banku served with grilled Tilapia and pepper.",
+                            "dietary": [
+                                "gluten-free"
+                            ],
+                            "image": "/images/bankutilapia.png"
+                        },
+                        {
+                            "id": "bankutilapialarge",
+                            "name": "Banku & Tilapia (Large)",
+                            "price": 200.00,
+                            "description": "Large portion of Banku served with grilled Tilapia and pepper.",
+                            "dietary": [
+                                "gluten-free"
+                            ],
+                            "image": "/images/bankutilapia.png"
+                        }
+                    ]
+                },
+                {
+                    "title": "Lunch Boxes & Baskets",
+                    "type": "standard",
+                    "items": [
+                        {
+                            "id": "zirconlunchbox",
+                            "name": "ZIRCON LUNCH BOX",
+                            "servings": "1-2 servings",
+                            "price": 380.00,
+                            "description": "Perfect for intimate gatherings or a luxurious personal meal.",
+                            "whatsInside": [
+                                "Fried Rice or Jollof",
+                                "Fresh Salad",
+                                "Fried Chicken",
+                                "Sausages",
+                                "Fried Plantain",
+                                "Donuts or Springrolls",
+                                "0.5L Fruit Juice",
+                                "Apple Sauce"
+                            ],
+                            "dietary": [],
+                            "image": "/images/zirconlunchbox.png",
+                            "featured": false
+                        },
+                        {
+                            "id": "amberlunchbox",
+                            "name": "AMBER LUNCH BOX",
+                            "servings": "3 servings",
+                            "price": 500.00,
+                            "description": "A delightful spread for small teams or family meals.",
+                            "whatsInside": [
+                                "Signature Jollof",
+                                "Veggie Egg Fried Rice",
+                                "Fresh Salad",
+                                "Fried Chicken",
+                                "Sausages",
+                                "Tuna Sandwich",
+                                "Donuts or Springrolls",
+                                "0.5L Fruit Juice",
+                                "Fresh Fruits",
+                                "Sauces",
+                                "Fried Plantain"
+                            ],
+                            "dietary": [],
+                            "image": "/images/amberlunchbox.png",
+                            "featured": false
+                        },
+                        {
+                            "id": "onyxlunchbasket",
+                            "name": "ONYX LUNCH BASKET",
+                            "servings": "4 servings",
+                            "price": 680.00,
+                            "description": "Elevate your gatherings with this premium assortment.",
+                            "whatsInside": [
+                                "Signature Jollof",
+                                "Veggie Egg Fried Rice",
+                                "Fresh Salad",
+                                "Fried Chicken",
+                                "Sausages",
+                                "Fried Plantain",
+                                "Tuna Sandwiches",
+                                "Springrolls or Donuts",
+                                "Pancakes or Waffles with Syrup",
+                                "Fresh Fruits",
+                                "Fruit Juice",
+                                "Water",
+                                "Assorted Sauces"
+                            ],
+                            "dietary": [],
+                            "image": "/images/onyxlunchbasket.jpg",
+                            "featured": false
+                        },
+                        {
+                            "id": "pearllunchbasket",
+                            "name": "PEARL LUNCH BASKET",
+                            "servings": "6-8 servings",
+                            "price": 900.00,
+                            "description": "A show-stopping centerpiece for corporate lunches and celebrations.",
+                            "whatsInside": [
+                                "Signature Jollof",
+                                "Veggie Egg Fried Rice",
+                                "Egg & Sausage Spaghetti",
+                                "Fresh Salad",
+                                "Fried Chicken",
+                                "Sausages",
+                                "Fried Plantain",
+                                "Tuna Sandwiches",
+                                "Pancakes or Waffles with Syrup",
+                                "Springrolls or Donuts",
+                                "Fresh Fruits",
+                                "1.5L Fruit Juice",
+                                "Water",
+                                "Assorted Sauces"
+                            ],
+                            "dietary": [],
+                            "image": "/images/pearllunchbasket.jpg",
+                            "featured": false
+                        },
+                        {
+                            "id": "opallunchbasket",
+                            "name": "OPAL LUNCH BASKET",
+                            "servings": "12-15 servings",
+                            "price": 1500.00,
+                            "description": "The ultimate luxury catering experience for grand occasions.",
+                            "whatsInside": [
+                                "2 bowls Signature Jollof",
+                                "1 bowl Veggie Egg Fried Rice",
+                                "1 bowl Egg & Sausage Spaghetti",
+                                "Fresh Salad",
+                                "Fried Chicken",
+                                "Sausages",
+                                "Fried Plantain",
+                                "Tuna Sandwiches",
+                                "Pancakes or Waffles with Syrup",
+                                "Springrolls or Donuts",
+                                "Fresh Fruits",
+                                "2L Fruit Juice",
+                                "1 Champagne Bottle",
+                                "Assorted Sauces"
+                            ],
+                            "dietary": [],
+                            "image": "/images/opallunchbasket.jpg",
+                            "featured": true
+                        },
+                        {
+                            "id": "topazlunchbasket",
+                            "name": "TOPAZ LUNCH BASKET",
+                            "servings": "18-20 servings",
+                            "price": 1860.00,
+                            "description": "Our most lavish offering for exclusive events and celebrations.",
+                            "whatsInside": [
+                                "2 bowls Signature Jollof",
+                                "1 bowl Veggie Egg Fried Rice",
+                                "1 bowl Egg & Sausage Spaghetti",
+                                "4 balls Banku & Tilapia",
+                                "Fresh Salad",
+                                "Fried Chicken",
+                                "Sausages",
+                                "Fried Plantain",
+                                "Assorted Tuna Sandwiches",
+                                "Premium Selection"
+                            ],
+                            "dietary": [],
+                            "image": "/images/topazlunchbasket.jpg",
+                            "featured": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "breakfast",
+            "title": "Breakfast Menu",
+            "description": "Waffles, pancakes, and premium breakfast baskets",
+            "image": "/images/breakfast-basket.png",
+            "subCategories": [
+                {
+                    "title": "Individual Breakfast Plates",
+                    "type": "standard",
+                    "items": [
+                        {
+                            "id": "minibreakfastplate",
+                            "name": "Mini Breakfast Plate",
+                            "price": 65.00,
+                            "description": "A delightful morning start with a perfect balance of sweet and savory.",
+                            "whatsInside": [
+                                "1 Mini Croissant / 1 Pancake / 1 Waffle & Syrup",
+                                "2 Sausages",
+                                "2 Sunny Side Up Eggs"
+                            ],
+                            "dietary": [],
+                            "image": "/images/minibreakfastplate.jpg"
+                        },
+                        {
+                            "id": "fullbreakfastplate",
+                            "name": "Full Breakfast Plate",
+                            "price": 170.00,
+                            "description": "A complete, satisfying breakfast experience to fuel your day.",
+                            "whatsInside": [
+                                "Croissant Sandwich / 3 Pancakes & Syrup",
+                                "2 Eggs",
+                                "2 Sausages",
+                                "Fresh Juice or Yogurt"
+                            ],
+                            "dietary": [],
+                            "image": "/images/fullbreakfastplate.jpg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Breakfast Boxes & Baskets",
+                    "type": "standard",
+                    "items": [
+                        {
+                            "id": "rubybreakfastbox",
+                            "name": "RUBY BREAKFAST BOX",
+                            "servings": "1-2 servings",
+                            "price": 310.00,
+                            "description": "Start your morning right with this elegant breakfast selection.",
+                            "whatsInside": [
+                                "Waffles, Pancakes or Crepes",
+                                "Syrup",
+                                "Tuna Sandwich",
+                                "Eggs",
+                                "Sausage",
+                                "Apple",
+                                "Water",
+                                "0.5L Juice"
+                            ],
+                            "dietary": [],
+                            "image": "/images/rubybreakfastbox.png"
+                        },
+                        {
+                            "id": "jadebreakfastbox",
+                            "name": "JADE BREAKFAST BOX",
+                            "servings": "3 servings",
+                            "price": 460.00,
+                            "description": "A delightful morning feast perfect for small gatherings.",
+                            "whatsInside": [
+                                "American Doughnuts",
+                                "Waffles, Pancakes or Crepes",
+                                "Syrup",
+                                "Sandwiches",
+                                "Eggs",
+                                "Sausages",
+                                "Apples",
+                                "0.5L Juice",
+                                "Hot Chocolate",
+                                "Water"
+                            ],
+                            "dietary": [],
+                            "image": "/images/jadebreakfastbox.jpg"
+                        },
+                        {
+                            "id": "sapphirebreakfastbox",
+                            "name": "SAPPHIRE BREAKFAST BOX",
+                            "servings": "4 servings",
+                            "price": 670.00,
+                            "description": "An indulgent breakfast spread with something for everyone.",
+                            "whatsInside": [
+                                "Mini Burgers",
+                                "Egg Wraps",
+                                "American Doughnuts",
+                                "Tuna Sandwich",
+                                "Croissant",
+                                "French Toast",
+                                "Waffles, Pancakes or Crepes",
+                                "Eggs",
+                                "Sausages",
+                                "0.5L Juice",
+                                "Water",
+                                "Syrup",
+                                "Apple",
+                                "Hot Chocolate",
+                                "Yogurt",
+                                "Milo",
+                                "Milk"
+                            ],
+                            "dietary": [],
+                            "image": "/images/sapphirebreakfastbox.jpg"
+                        },
+                        {
+                            "id": "amethystbreakfastbasket",
+                            "name": "AMETHYST BREAKFAST BASKET",
+                            "servings": "6 servings",
+                            "price": 945.00,
+                            "description": "Premium morning celebration for family and friends.",
+                            "whatsInside": [
+                                "Mini Burgers",
+                                "Egg Wrap",
+                                "Sandwiches",
+                                "Mini Doughnuts",
+                                "Pancakes or Crepes",
+                                "French Toast",
+                                "Eggs",
+                                "Waffles",
+                                "Croissant",
+                                "Sausages",
+                                "Syrup",
+                                "Apples",
+                                "Orange",
+                                "Yogurt",
+                                "Water",
+                                "Juice",
+                                "Hot Chocolate"
+                            ],
+                            "dietary": [],
+                            "image": "/images/amethystbreakfastbasket.jpg"
+                        },
+                        {
+                            "id": "peridotbreakfastbasket",
+                            "name": "PERIDOT BREAKFAST BASKET",
+                            "servings": "8-10 servings",
+                            "price": 1225.00,
+                            "description": "A lavish breakfast experience for corporate events or large gatherings.",
+                            "whatsInside": [
+                                "Croissant",
+                                "Pancakes or Crepes",
+                                "Syrup",
+                                "Waffles",
+                                "Salad",
+                                "Doughnuts",
+                                "Sandwiches",
+                                "Eggs",
+                                "Baked Beans",
+                                "Sausages",
+                                "2L Juice",
+                                "Apples",
+                                "Seasonal Fruit",
+                                "Milo",
+                                "Milk",
+                                "Hot Chocolate",
+                                "Toast"
+                            ],
+                            "dietary": [],
+                            "image": "/images/peridotbreakfastbasket.jpg"
+                        },
+                        {
+                            "id": "coralbreakfastbasket",
+                            "name": "CORAL BREAKFAST BASKET",
+                            "servings": "12-15 servings",
+                            "price": 1700.00,
+                            "description": "The ultimate breakfast catering for grand celebrations.",
+                            "whatsInside": [
+                                "Croissant",
+                                "Pancakes or Crepes",
+                                "Syrup",
+                                "Waffles",
+                                "Fried Chicken",
+                                "Doughnuts",
+                                "Sandwiches",
+                                "Eggs",
+                                "Baked Beans",
+                                "Sausages",
+                                "3L Juice",
+                                "Apples",
+                                "Seasonal Fruit",
+                                "Milo",
+                                "Milk",
+                                "Hot Chocolate"
+                            ],
+                            "dietary": [],
+                            "image": "/images/coralbreakfastbasket.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "cakes-desserts",
+            "title": "Cakes & Desserts",
+            "description": "Custom cakes, cupcakes, and sweet treats",
+            "image": "/images/cake.png",
+            "subCategories": [
+                {
+                    "title": "Cakes",
+                    "type": "cake",
+                    "items": [
+                        {
+                            "id": "small5cake",
+                            "name": "Small 5\" Cake",
+                            "price": 200.00,
+                            "description": "Perfect for small gatherings and intimate celebrations.",
+                            "options": [
+                                "Vanilla",
+                                "Red Velvet",
+                                "Chocolate",
+                                "Caramel",
+                                "Strawberry"
+                            ],
+                            "dietary": [],
+                            "image": "/images/small5cake.png"
+                        },
+                        {
+                            "id": "6cake1flavour",
+                            "name": "6\" Cake (1 Flavour)",
+                            "price": 400.00,
+                            "description": "Standard 6 inch cake with one flavor selection.",
+                            "options": [
+                                "Vanilla",
+                                "Red Velvet",
+                                "Chocolate",
+                                "Caramel",
+                                "Strawberry"
+                            ],
+                            "dietary": [],
+                            "image": "/images/6cake1flavour.jpg"
+                        },
+                        {
+                            "id": "6cake2flavours",
+                            "name": "6\" Cake (2 Flavours)",
+                            "price": 450.00,
+                            "description": "Standard 6 inch cake with two flavor selections for variety.",
+                            "options": [
+                                "Vanilla",
+                                "Red Velvet",
+                                "Chocolate",
+                                "Caramel",
+                                "Strawberry"
+                            ],
+                            "dietary": [],
+                            "image": "/images/6cake2flavours.jpg"
+                        },
+                        {
+                            "id": "8cake1flavour",
+                            "name": "8\" Cake (1 Flavour)",
+                            "price": 600.00,
+                            "description": "Medium 8 inch cake perfect for medium-sized gatherings.",
+                            "options": [
+                                "Vanilla",
+                                "Red Velvet",
+                                "Chocolate",
+                                "Caramel",
+                                "Strawberry"
+                            ],
+                            "dietary": [],
+                            "image": "/images/8cake1flavour.jpg"
+                        },
+                        {
+                            "id": "8cake2flavours",
+                            "name": "8\" Cake (2 Flavours)",
+                            "price": 700.00,
+                            "description": "Medium 8 inch cake with two delicious flavor combinations.",
+                            "options": [
+                                "Vanilla",
+                                "Red Velvet",
+                                "Chocolate",
+                                "Caramel",
+                                "Strawberry"
+                            ],
+                            "dietary": [],
+                            "image": "/images/8cake2flavours.jpg"
+                        },
+                        {
+                            "id": "10cake1flavour",
+                            "name": "10\" Cake (1 Flavour)",
+                            "price": 800.00,
+                            "description": "Large 10 inch cake ideal for big celebrations.",
+                            "options": [
+                                "Vanilla",
+                                "Red Velvet",
+                                "Chocolate",
+                                "Caramel",
+                                "Strawberry"
+                            ],
+                            "dietary": [],
+                            "image": "/images/10cake1flavour.jpg"
+                        },
+                        {
+                            "id": "10cake2flavours",
+                            "name": "10\" Cake (2 Flavours)",
+                            "price": 900.00,
+                            "description": "Large 10 inch cake with two exquisite flavors.",
+                            "options": [
+                                "Vanilla",
+                                "Red Velvet",
+                                "Chocolate",
+                                "Caramel",
+                                "Strawberry"
+                            ],
+                            "dietary": [],
+                            "image": "/images/10cake2flavours.jpg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Cupcakes",
+                    "type": "standard",
+                    "items": [
+                        {
+                            "id": "cupcakes6pieces",
+                            "name": "Cupcakes (6 pieces)",
+                            "price": 150.00,
+                            "description": "Half dozen beautifully decorated cupcakes.",
+                            "dietary": [],
+                            "image": "/images/cupcakes6pieces.jpg"
+                        },
+                        {
+                            "id": "cupcakes12pieces",
+                            "name": "Cupcakes (12 pieces)",
+                            "price": 280.00,
+                            "description": "One dozen cupcakes perfect for parties and events.",
+                            "dietary": [],
+                            "image": "/images/cupcakes12pieces.jpg"
+                        },
+                        {
+                            "id": "pullapartcupcakes",
+                            "name": "Pull Apart Cupcakes (9 pieces)",
+                            "price": 250.00,
+                            "description": "Creative pull-apart design that forms a stunning centerpiece.",
+                            "dietary": [],
+                            "image": "/images/pullapartcupcakes.jpg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Bento Sets",
+                    "type": "standard",
+                    "items": [
+                        {
+                            "id": "bentoset6in1",
+                            "name": "Bento Set 6in1",
+                            "price": 400.00,
+                            "description": "5\" Cake + 5 Cupcakes - A delightful dessert combo.",
+                            "dietary": [],
+                            "image": "/images/bentoset6in1.png"
+                        },
+                        {
+                            "id": "bentoset7in1",
+                            "name": "Bento Set 7in1",
+                            "price": 450.00,
+                            "description": "5\" Cake + 5 Cupcakes + 1 Champagne - The perfect celebration pack.",
+                            "dietary": [],
+                            "image": "/images/bentoset7in1.jpg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Cake Accessories",
+                    "type": "accessory",
+                    "items": [
+                        {
+                            "id": "candles",
+                            "name": "Candles",
+                            "price": 5.00,
+                            "image": "/images/candles.jpg"
+                        },
+                        {
+                            "id": "flowers",
+                            "name": "Flowers",
+                            "price": 50.00,
+                            "image": "/images/flowers.jpg"
+                        },
+                        {
+                            "id": "fruits",
+                            "name": "Fruits",
+                            "price": 50.00,
+                            "image": "/images/fruits.jpg"
+                        },
+                        {
+                            "id": "edibleprintphotos",
+                            "name": "Edible Print/Photos",
+                            "price": 70.00,
+                            "image": "/images/edibleprintphotos.jpg"
+                        },
+                        {
+                            "id": "customization",
+                            "name": "Customization",
+                            "price": 500.00,
+                            "description": "Custom cake design and decoration",
+                            "image": "/images/customization.jpg"
+                        },
+                        {
+                            "id": "cardtoppers",
+                            "name": "Card Toppers",
+                            "price": 120.00,
+                            "image": "/images/cardtoppers.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "finger-foods",
+            "title": "Finger Foods & Platters",
+            "description": "Party platters and gourmet bites for every occasion",
+            "image": "/images/finger-food.png",
+            "subCategories": [
+                {
+                    "title": "Party Platters",
+                    "type": "standard",
+                    "items": [
+                        {
+                            "id": "socialspreadbox",
+                            "name": "SOCIAL SPREAD BOX",
+                            "price": 1150.00,
+                            "description": "The ultimate party platter with a diverse selection of finger foods.",
+                            "whatsInside": [
+                                "Sandwiches (8pcs)",
+                                "Springrolls (5pcs)",
+                                "Sausage Rolls (5pcs)",
+                                "Meat Pie (5pcs)",
+                                "Mini Pizza (8pcs)",
+                                "Chicken/Wings (10pcs)",
+                                "Sausage Kebab (5pcs)",
+                                "Cupcakes (6pcs)",
+                                "Samosa (5pcs)"
+                            ],
+                            "dietary": [],
+                            "image": "/images/socialspreadbox.png"
+                        },
+                        {
+                            "id": "bitesizedbliss",
+                            "name": "BITE SIZED BLISS",
+                            "price": 400.00,
+                            "description": "5 pieces each of carefully selected finger foods.",
+                            "whatsInside": [
+                                "Spring Rolls (5pcs)",
+                                "Samosa (5pcs)",
+                                "Yam Balls (5pcs)",
+                                "Sausage Kebab (5pcs)",
+                                "Sandwich (5pcs)"
+                            ],
+                            "dietary": [],
+                            "image": "/images/bitesizedbliss.jpg"
+                        },
+                        {
+                            "id": "gourmetbites",
+                            "name": "GOURMET BITES",
+                            "price": 1000.00,
+                            "description": "Premium finger foods selection - 5 pieces each.",
+                            "whatsInside": [
+                                "Spring Rolls (5pcs)",
+                                "Yam Balls (5pcs)",
+                                "Mini Beef Burger (5pcs)",
+                                "Meat Pie (5pcs)",
+                                "Croissant (5pcs)",
+                                "Quiche (5pcs)",
+                                "Chicken Wings (5pcs)"
+                            ],
+                            "dietary": [],
+                            "image": "/images/gourmetbites.jpg"
+                        },
+                        {
+                            "id": "thepartyplatter",
+                            "name": "THE PARTY PLATTER",
+                            "price": 1245.00,
+                            "description": "10 pieces each of crowd-favorite finger foods.",
+                            "whatsInside": [
+                                "Chicken Wings (10pcs)",
+                                "Meat Balls (10pcs)",
+                                "Sausage Kebab (10pcs)",
+                                "Samosa (10pcs)",
+                                "Springrolls (10pcs)",
+                                "Chicken Wrap (10pcs)"
+                            ],
+                            "dietary": [],
+                            "image": "/images/thepartyplatter.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "build-a-bite",
+            "title": "Build-A-Bite",
+            "description": "Create your perfect custom feast",
+            "image": "/images/buildabite.png",
+            "subCategories": [
+                {
+                    "title": "Build Your Custom Feast",
+                    "type": "builder",
+                    "description": "Select your favorite items to create a personalized catering experience."
+                }
+            ]
+        },
+        {
+            "id": "extras",
+            "title": "Extras & Add-Ons",
+            "description": "Balloons, flowers, beverages, and special touches",
+            "image": "/images/extras.png",
+            "subCategories": [
+                {
+                    "title": "Snack Combos",
+                    "type": "standard",
+                    "items": [
+                        {
+                            "id": "snackcombo1",
+                            "name": "Snack Combo 1",
+                            "price": 155.00,
+                            "whatsInside": [
+                                "6pcs Spicy Chicken Wings",
+                                "French Fries",
+                                "Tuna/Chicken Sandwich"
+                            ],
+                            "dietary": [],
+                            "image": "/images/snackcombo1.jpg"
+                        },
+                        {
+                            "id": "snackcombo2",
+                            "name": "Snack Combo 2",
+                            "price": 110.00,
+                            "whatsInside": [
+                                "Beef Burger Fries",
+                                "Chicken Wrap/French Fries",
+                                "Chicken Wings"
+                            ],
+                            "dietary": [],
+                            "image": "/images/snackcombo2.jpg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Beverages & Alcohol",
+                    "type": "standard",
+                    "items": [
+                        {
+                            "id": "champagne",
+                            "name": "Champagne",
+                            "price": 70.00,
+                            "image": "/images/champagne.jpg"
+                        },
+                        {
+                            "id": "wine",
+                            "name": "Wine",
+                            "price": 180.00,
+                            "image": "/images/wine.jpg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Balloons",
+                    "type": "standard",
+                    "items": [
+                        {
+                            "id": "customisedboboballoon",
+                            "name": "Customised Bobo Balloon",
+                            "price": 100.00,
+                            "image": "/images/customisedboboballoon.jpg"
+                        },
+                        {
+                            "id": "customizedheartshapedheliumballoon",
+                            "name": "Customized Heart Shaped Helium Balloon",
+                            "price": 80.00,
+                            "image": "/images/customizedheartshapedheliumballoon.jpg"
+                        },
+                        {
+                            "id": "setof5heliumballoons",
+                            "name": "Set of 5 Helium Balloons",
+                            "price": 280.00,
+                            "image": "/images/setof5heliumballoons.jpg"
+                        },
+                        {
+                            "id": "latexairfilledballoon",
+                            "name": "Latex (Air Filled) Balloon",
+                            "price": 40.00,
+                            "image": "/images/latexairfilledballoon.jpg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Fresh Roses",
+                    "type": "standard",
+                    "items": [
+                        {
+                            "id": "5stemsroses",
+                            "name": "5 Stems Roses",
+                            "price": 350.00,
+                            "description": "With Gypso: GHC 400.00",
+                            "image": "/images/5stemsroses.jpg"
+                        },
+                        {
+                            "id": "10stemsroses",
+                            "name": "10 Stems Roses",
+                            "price": 550.00,
+                            "description": "With Gypso: GHC 600.00",
+                            "image": "/images/10stemsroses.jpg"
+                        },
+                        {
+                            "id": "15stemsroses",
+                            "name": "15 Stems Roses",
+                            "price": 750.00,
+                            "description": "With Gypso: GHC 800.00",
+                            "image": "/images/15stemsroses.jpg"
+                        },
+                        {
+                            "id": "20stemsroses",
+                            "name": "20 Stems Roses",
+                            "price": 1000.00,
+                            "description": "With Gypso: GHC 1,100.00",
+                            "image": "/images/20stemsroses.jpg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Cards",
+                    "type": "standard",
+                    "items": [
+                        {
+                            "id": "cardfornote",
+                            "name": "Card for Note",
+                            "price": 10.00,
+                            "image": "/images/cardfornote.jpg"
+                        },
+                        {
+                            "id": "birthdaycard",
+                            "name": "Birthday Card",
+                            "price": 40.00,
+                            "image": "/images/birthdaycard.jpg"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -30,17 +30,11 @@ export default {
                 charcoal: {
                     DEFAULT: '#2C2C2C',
                     light: '#6B6B6B',
-                },
-                yellow: {
-                    500: '#6B4F3F',  // Accent yellow
-                    600: '#F9F3E6',
-                    700: '#E6B962',
-                },
-
+                }
             },
             fontFamily: {
                 display: ['"Playfair Display"', 'serif'],
-                body: ['Arial', 'sans-serif'],
+                body: ['Lato', 'sans-serif'],
             },
             boxShadow: {
                 'soft': '0 4px 20px rgba(0, 0, 0, 0.06)',

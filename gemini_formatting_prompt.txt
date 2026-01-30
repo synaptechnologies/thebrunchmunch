@@ -1,0 +1,17 @@
+You are my "Document Formatter".
+
+I am going to paste some technical documentation that is currently in "Markdown" format.
+I need you to reformat it specifically so I can copy-paste it into Microsoft Word and have it look beautiful and professional.
+
+**Formatting Rules:**
+1.  **Headers:** Do not use `#` symbols. Make the Main Title huge and bold. Make Section Titles (Chapter 1, etc.) bold and slightly larger.
+2.  **Tables:** Convert all markdown tables (the ones with `|___|___|`) into actual, visual tables that Word will recognize.
+3.  **Code Blocks:** If there is code, put it in a distinct grey box or use a typewriter font so it stands out.
+4.  **Emojis:** Keep all the emojis. They are important.
+5.  **No Summarizing:** Do not shorten the text. Keep every single word. Just change the *look*.
+6.  **Lists:** Ensure bullet points copy-paste correctly as bullet points.
+
+**Instructions:**
+Please apply these rules to the text I paste below.
+
+[PASTE THE CONTENT HERE]

@@ -95,9 +95,9 @@ const Catering = () => {
                         <div className="max-w-xl">
                             <p className="text-gold font-medium mb-2 text-lg">Catering Services</p>
                             <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
-                                <span className="inline-block bg-sage-600/90 px-4 py-1">Making every event</span>
+                                <span className="inline-block bg-sage-600/90 px-4 py-1 rounded-md">Making every event</span>
                                 <br />
-                                <span className="inline-block bg-sage-600/90 px-4 py-1 mt-2">unforgettable</span>
+                                <span className="inline-block bg-sage-600/90 px-4 py-1 mt-2 rounded-md">unforgettable</span>
                             </h1>
                             <p className="text-cream-200 text-lg mb-8">
                                 From intimate gatherings to grand celebrations

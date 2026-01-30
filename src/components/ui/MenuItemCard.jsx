@@ -16,7 +16,7 @@ const MenuItemCard = ({ item, categoryId }) => {
     return (
         <Link
             to={`/product/${item.id}`}
-            className="group block bg-white rounded-xl overflow-hidden card-lift shadow-soft hover:shadow-card-hover"
+            className="group block bg-white rounded-xl overflow-hidden card-lift shadow-soft hover:shadow-card-hover h-full flex flex-col"
         >
             {/* Image */}
             <div className="image-zoom-container aspect-[4/3] bg-gray-100 relative overflow-hidden">
@@ -36,7 +36,7 @@ const MenuItemCard = ({ item, categoryId }) => {
             </div>
 
             {/* Content */}
-            <div className="p-5">
+            <div className="p-5 flex flex-col flex-1">
                 <h3 className="font-display text-lg font-semibold text-charcoal mb-2 group-hover:text-sage-600 transition-colors duration-200 line-clamp-1">
                     {item.name}
                 </h3>
@@ -49,7 +49,7 @@ const MenuItemCard = ({ item, categoryId }) => {
                     {item.description || item.whatsInside?.slice(0, 3).join(', ')}
                 </p>
 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mt-auto">
                     <span className="font-display text-2xl font-bold text-sage-600">
                         {formatPrice(item.price)}
                     </span>

@@ -216,11 +216,11 @@ const Home = () => {
             {/* Chef's Special - Full Width Promo */}
             <section className="py-12 bg-cream-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-yellow-800 rounded-2xl overflow-hidden shadow-soft-lg reveal">
+                    <div className="bg-gradient-to-r from-amber-900 to-amber-800 rounded-2xl overflow-hidden shadow-soft-lg reveal">
                         <div className="flex flex-col lg:flex-row min-h-[350px]">
                             {/* Left Content */}
                             <div className="lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                                <span className="text-white text-sm font-semibold tracking-widest uppercase mb-3">
+                                <span className="text-gold text-sm font-semibold tracking-widest uppercase mb-3">
                                     Chef's Special
                                 </span>
                                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
@@ -231,7 +231,7 @@ const Home = () => {
                                     {chefsSpecial.description}
                                 </p>
                                 <div className="flex items-center gap-6">
-                                    <span className="font-display text-3xl font-bold text-white">
+                                    <span className="font-display text-3xl font-bold text-gold">
                                         {formatPrice(chefsSpecial.price)}
                                     </span>
                                     <button
@@ -274,9 +274,9 @@ const Home = () => {
                         {events.map((event, index) => (
                             <div
                                 key={event.title}
-                                className={`flex-shrink-0 w-64 bg-cream-100 rounded-xl p-6 hover:shadow-soft-lg transition-all duration-300 card-lift`}
+                                className={`flex-shrink-0 w-64 bg-cream-100 rounded-xl p-6 hover:shadow-soft-lg transition-all duration-300 card-lift h-full flex flex-col`}
                             >
-                                <div className="w-12 h-12 bg-sage-500 text-white rounded-full flex items-center justify-center mb-4">
+                                <div className="w-12 h-12 bg-sage-500 text-white rounded-full flex items-center justify-center mb-4 flex-shrink-0">
                                     {event.icon}
                                 </div>
                                 <h3 className="font-display text-lg font-bold text-charcoal mb-2">
@@ -314,7 +314,7 @@ const Home = () => {
                         {reviews.map((review, index) => (
                             <div
                                 key={review.name}
-                                className={`reveal bg-white rounded-xl p-6 shadow-soft hover:shadow-soft-lg transition-all duration-300 card-lift stagger-${(index % 5) + 1}`}
+                                className={`reveal bg-white rounded-xl p-6 shadow-soft hover:shadow-soft-lg transition-all duration-300 card-lift stagger-${(index % 5) + 1} h-full flex flex-col`}
                             >
                                 {/* Quote Icon */}
                                 <div className="mb-4">
@@ -334,7 +334,7 @@ const Home = () => {
                                 </p>
 
                                 {/* Customer Info */}
-                                <div className="flex items-center gap-3 pt-4 border-t border-gray-light">
+                                <div className="flex items-center gap-3 pt-4 border-t border-gray-light mt-auto">
                                     <img
                                         src={review.image}
                                         alt={review.name}
@@ -366,7 +366,7 @@ const Home = () => {
                                     </div>
                                     <div>
                                         <h3 className="font-display text-xl font-semibold mb-2">Premium Quality</h3>
-                                        <p className="text-cream-200 position: fixed">Fresh ingredients, prepared daily with love and care by our expert chefs.</p>
+                                        <p className="text-cream-200">Fresh ingredients, prepared daily with love and care by our expert chefs.</p>
                                     </div>
                                 </div>
 

@@ -50,9 +50,9 @@ const Menu = () => {
                         <div className="max-w-lg">
                             <p className="text-gold font-medium mb-2 text-lg">Our Menu</p>
                             <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
-                                <span className="inline-block bg-sage-600/90 px-4 py-1">Crafted for moments</span>
+                                <span className="inline-block bg-sage-600/90 px-4 py-1 rounded-md">Crafted for moments</span>
                                 <br />
-                                <span className="inline-block bg-sage-600/90 px-4 py-1 mt-2">worth sharing</span>
+                                <span className="inline-block bg-sage-600/90 px-4 py-1 mt-2 rounded-md">worth sharing</span>
                             </h1>
                             <p className="text-cream-200 text-lg">
                                 Freshly prepared artisan meals, perfect for any occasion
@@ -96,7 +96,7 @@ const Menu = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filteredItems.map((item, index) => (
-                            <div key={item.id} className={`reveal stagger-${(index % 5) + 1}`}>
+                            <div key={item.id} className={`reveal stagger-${(index % 5) + 1} h-full`}>
                                 <MenuItemCard item={item} categoryId={item.categoryId} />
                             </div>
                         ))}

@@ -68,7 +68,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
         const whatsappLink = generateWhatsAppLink(message)
 
         // Open WhatsApp
-        window.open(whatsappLink, '_blank')
+        window.open(whatsappLink, '_blank', 'noopener,noreferrer')
 
         // Clear cart and close modals
         clearCart()

@@ -215,15 +215,20 @@ const Home = () => {
 
             {/* Chef's Special - Full Width Promo */}
             <section className="py-12 bg-cream-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-12 reveal">
+                    <h2 className="font-display text-4xl md:text-5xl font-bold text-charcoal mb-4">
+                        Chef's Special
+                    </h2>
+                    <p className="text-lg text-charcoal-light max-w-2xl mx-auto">
+                        From breakfast baskets to luxury lunch platters, discover our curated selection
+                    </p>
+                </div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
                     <div className="bg-gradient-to-r from-amber-900 to-amber-800 rounded-2xl overflow-hidden shadow-soft-lg reveal">
-                        <div className="flex flex-col lg:flex-row min-h-[350px]">
+                        <div className="flex flex-col-reverse lg:flex-row min-h-[350px]">
                             {/* Left Content */}
                             <div className="lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                                <span className="text-gold text-sm font-semibold tracking-widest uppercase mb-3">
-                                    Chef's Special
-                                </span>
-                                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+                                <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
                                     {chefsSpecial.name}
                                 </h2>
                                 <p className="text-amber-200 text-sm mb-4">{chefsSpecial.subtitle} • Feeds {chefsSpecial.serves}</p>
@@ -231,7 +236,7 @@ const Home = () => {
                                     {chefsSpecial.description}
                                 </p>
                                 <div className="flex items-center gap-6">
-                                    <span className="font-display text-3xl font-bold text-gold">
+                                    <span className="font-display text-xl font-bold text-white">
                                         {formatPrice(chefsSpecial.price)}
                                     </span>
                                     <button

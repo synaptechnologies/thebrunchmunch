@@ -76,7 +76,7 @@ const Catering = () => {
     return (
         <div className="pt-20">
             {/* Hero Section - Full Bleed with Gradient Overlay */}
-            <section className="relative h-[400px] md:h-[500px] overflow-hidden">
+            <section className="relative h-[500px] md:h-[600px] overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0">
                     <img

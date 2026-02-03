@@ -34,8 +34,8 @@ const Navbar = ({ scrolled }) => {
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-3 group">
-                        <div className="w-10 h-10 bg-sage-500 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                            <span className="text-white font-display text-xl font-bold">B</span>
+                        <div className="w-10 transition-transform duration-300 group-hover:scale-110">
+                            <img className='rounded-md' src="public/images/brunch_logo.jpg" alt="Logo" />
                         </div>
                         <span className="font-display text-2xl text-charcoal font-semibold hidden sm:block">
                             The Brunch Munch

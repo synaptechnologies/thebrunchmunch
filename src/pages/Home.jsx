@@ -2,6 +2,7 @@ import { ArrowRight, Truck, Clock, Award, Star, Heart, Users, Cake, Briefcase, P
 import Button from '../components/ui/Button'
 import CategoryCard from '../components/ui/CategoryCard'
 import data from '../data/data.json'
+import ChefSpecialCarousel from '../components/ui/ChefSpecialCarousel'
 import { useRef } from 'react'
 import { useCart } from '../context/CartContext'
 import { formatPrice } from '../utils/formatters'
@@ -11,20 +12,18 @@ const Home = () => {
     const scrollRef = useRef(null)
     const { addToCart } = useCart()
 
-    // Chef's Special - Featured Product
-    const chefsSpecial = {
-        id: 'pearllunchbasket',
-        name: 'The Pearl Lunch Basket',
-        subtitle: 'Our Signature Feast',
-        description: 'Signature Jollof, Veggie Egg Fried Rice, Egg & Sausage Spaghetti, Salad, Fried Chicken, Sausages, Fried Plantain, Tuna Sandwiches, Pancakes, Fruits, Juice & more.',
-        serves: '6-8 people',
-        price: 900.00,
-        image: '/images/pearllunchbasket.png'
-    }
+    // Build Chef's Special carousel items from menu data
+    const allItems = data.categories.flatMap((c) => c.subCategories.flatMap((sc) => sc.items || []))
 
-    const handleAddToCart = () => {
-        addToCart(chefsSpecial, 1)
-    }
+    const chefSpecialIds = [
+        'pearllunchbasket',
+        'onyxlunchbasket',
+        'amberlunchbox',
+        'zirconlunchbox',
+        'opallunchbasket'
+    ]
+
+    const chefItems = chefSpecialIds.map((id) => allItems.find((it) => it.id === id)).filter(Boolean)
 
     const scrollLeft = () => {
         scrollRef.current.scrollBy({ left: -350, behavior: 'smooth' })
@@ -213,7 +212,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Chef's Special - Full Width Promo */}
+            {/* Chef's Special - Carousel built from menu items */}
             <section className="py-12 bg-cream-100">
                 <div className="text-center mb-12 reveal">
                     <h2 className="font-display text-4xl md:text-5xl font-bold text-charcoal mb-4">
@@ -223,43 +222,8 @@ const Home = () => {
                         From breakfast baskets to luxury lunch platters, discover our curated selection
                     </p>
                 </div>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-                    <div className="bg-gradient-to-r from-amber-900 to-amber-800 rounded-2xl overflow-hidden shadow-soft-lg reveal">
-                        <div className="flex flex-col-reverse lg:flex-row min-h-[350px]">
-                            {/* Left Content */}
-                            <div className="lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                                <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-                                    {chefsSpecial.name}
-                                </h2>
-                                <p className="text-amber-200 text-sm mb-4">{chefsSpecial.subtitle} • Feeds {chefsSpecial.serves}</p>
-                                <p className="text-cream-200 text-base leading-relaxed mb-6 max-w-lg">
-                                    {chefsSpecial.description}
-                                </p>
-                                <div className="flex items-center gap-6">
-                                    <span className="font-display text-xl font-bold text-white">
-                                        {formatPrice(chefsSpecial.price)}
-                                    </span>
-                                    <button
-                                        onClick={handleAddToCart}
-                                        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-amber-900 rounded-full font-semibold hover:bg-cream-100 transition-colors duration-200 shadow-soft"
-                                    >
-                                        <ShoppingBag className="w-5 h-5" />
-                                        Add to Cart
-                                    </button>
-                                </div>
-                            </div>
-                            {/* Right Image */}
-                            <div className="lg:w-1/2 relative min-h-[250px] lg:min-h-full">
-                                <img
-                                    src={chefsSpecial.image}
-                                    alt={chefsSpecial.name}
-                                    className="absolute inset-0 w-full h-full object-cover"
-                                    onError={(e) => e.target.src = '/images/lunch.png'}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                <ChefSpecialCarousel items={chefItems} />
             </section>
 
             {/* Events We Cater For */}
@@ -279,7 +243,7 @@ const Home = () => {
                         {events.map((event, index) => (
                             <div
                                 key={event.title}
-                                className={`flex-shrink-0 w-64 bg-cream-100 rounded-xl p-6 hover:shadow-soft-lg transition-all duration-300 card-lift h-full flex flex-col`}
+                                className={`flex-shrink-0 w-64 bg-cream-100 rounded-xl p-6 hover:shadow-soft-lg transition-all duration-300 card-lift h-64 flex flex-col`}
                             >
                                 <div className="w-12 h-12 bg-sage-500 text-white rounded-full flex items-center justify-center mb-4 flex-shrink-0">
                                     {event.icon}

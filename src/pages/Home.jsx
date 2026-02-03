@@ -87,7 +87,7 @@ const Home = () => {
         {
             name: "Ama Boateng",
             role: "Birthday Celebration",
-            rating: 5,
+            rating: 4.5,
             text: "The custom cake and party platter were a huge hit at my daughter's birthday. Everything was fresh, beautifully packaged, and tasted incredible!",
             image: "https://ui-avatars.com/api/?name=Ama+Boateng&background=6B8F71&color=fff&size=200"
         },
@@ -275,7 +275,7 @@ const Home = () => {
                     </div>
 
                     {/* Events Carousel - Horizontal Scroll */}
-                    <div className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                    <div className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4 " style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                         {events.map((event, index) => (
                             <div
                                 key={event.title}

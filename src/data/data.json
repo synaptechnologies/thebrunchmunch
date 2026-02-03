@@ -730,19 +730,6 @@
             ]
         },
         {
-            "id": "build-a-bite",
-            "title": "Build-A-Bite",
-            "description": "Create your perfect custom feast",
-            "image": "/images/buildabite.png",
-            "subCategories": [
-                {
-                    "title": "Build Your Custom Feast",
-                    "type": "builder",
-                    "description": "Select your favorite items to create a personalized catering experience."
-                }
-            ]
-        },
-        {
             "id": "extras",
             "title": "Extras & Add-Ons",
             "description": "Balloons, flowers, beverages, and special touches",

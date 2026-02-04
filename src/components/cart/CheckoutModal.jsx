@@ -54,7 +54,13 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
         )
     }
 
-    const handleSubmit = (e) => {
+    // Configure your Apps Script Web App URL here after deploying it.
+    // Example: const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/XXX/exec'
+    const APPS_SCRIPT_URL = ''
+    // Optional secret token (only if your Apps Script validates it). Avoid committing real secrets to source.
+    const APPS_SCRIPT_SECRET = ''
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         // Include GPS coordinates in form data for WhatsApp message
@@ -63,12 +69,41 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
             gpsCoords: gpsCoords
         }
 
-        // Generate WhatsApp message
+        // Prepare payload to save to Google Sheets via Apps Script
+        const payload = {
+            secret: APPS_SCRIPT_SECRET,
+            customer: customerInfo,
+            items: cartItems,
+            orderTotal
+        }
+
+        // Try to POST order data to Apps Script endpoint (if configured)
+        try {
+            if (APPS_SCRIPT_URL) {
+                const res = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                })
+
+                const data = await res.json()
+                if (!data || data.success === false) {
+                    console.warn('Apps Script save failed', data)
+                    // Let user know but continue to open WhatsApp
+                    alert('Order could not be saved to sheet: ' + (data?.error || 'unknown error'))
+                }
+            }
+        } catch (err) {
+            console.error('Failed to save order to Apps Script:', err)
+            // Inform user but allow them to continue placing the order
+            alert('Could not save order to Google Sheets. You can still continue to WhatsApp.')
+        }
+
+        // Generate WhatsApp message and open safely
         const message = formatWhatsAppMessage(cartItems, customerInfo, orderTotal)
         const whatsappLink = generateWhatsAppLink(message)
-
-        // Open WhatsApp
-        window.open(whatsappLink, '_blank', 'noopener,noreferrer')
+        const w = window.open(whatsappLink, '_blank')
+        if (w) w.opener = null
 
         // Clear cart and close modals
         clearCart()

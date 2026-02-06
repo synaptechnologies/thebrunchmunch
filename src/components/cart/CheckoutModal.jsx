@@ -74,6 +74,11 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
             gpsCoords: gpsCoords
         }
 
+        // Generate WhatsApp link
+        const message = formatWhatsAppMessage(cartItems, customerInfo, orderTotal)
+        const link = generateWhatsAppLink(message)
+        setWhatsappLink(link)
+
         // Prepare payload to save to Google Sheets via Apps Script
         const payload = {
             secret: APPS_SCRIPT_SECRET,
@@ -82,55 +87,44 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
             orderTotal
         }
 
-        // Try to POST order data to Apps Script endpoint (if configured)
+        // STEP 1: Save to Google Sheets FIRST
         try {
             if (APPS_SCRIPT_URL) {
-                const res = await fetch(APPS_SCRIPT_URL, {
+                await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 })
 
-                // With mode: 'no-cors', response is opaque, so we can't read it
-                // But the request did go through. Show success message.
+                // Show success notification
                 setNotification({ type: 'success', message: 'Order saved successfully!' })
                 setTimeout(() => setNotification(null), 3000)
+
+                // STEP 2: THEN redirect to WhatsApp (hard redirect with fallback)
+                setTimeout(() => {
+                    // Try hard redirect first
+                    window.location.href = link
+
+                    // Fallback: if redirect doesn't work, show modal after 2 seconds
+                    setTimeout(() => {
+                        setIsSubmitting(false)
+                        setOrderConfirmed(true)
+                    }, 2000)
+                }, 1000) // Wait 1 second after success notification before redirecting
             }
         } catch (err) {
             console.error('Failed to save order to Apps Script:', err)
-            // Even if fetch fails, continue to show confirmation
             setNotification({ type: 'error', message: 'Information not processed. Please try again.' })
             setTimeout(() => setNotification(null), 4000)
-        }
-
-        // Generate WhatsApp link
-        const message = formatWhatsAppMessage(cartItems, customerInfo, orderTotal)
-        const link = generateWhatsAppLink(message)
-        setWhatsappLink(link)
-
-        // After 2 seconds: Show order confirmed and try auto-redirect
-        setTimeout(() => {
             setIsSubmitting(false)
-            setOrderConfirmed(true)
-
-            // Try auto-redirect to WhatsApp
-            setTimeout(() => {
-                window.open(link, '_blank')
-            }, 500)
-        }, 2000)
+        }
     }
 
     const handleOpenWhatsApp = () => {
         if (whatsappLink) {
-            window.open(whatsappLink, '_blank')
+            window.location.href = whatsappLink
         }
-        // Close modal and clear cart
-        setTimeout(() => {
-            clearCart()
-            setIsCartOpen(false)
-            onClose()
-        }, 500)
     }
 
     if (!isOpen) return null

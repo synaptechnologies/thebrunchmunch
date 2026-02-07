@@ -49,7 +49,7 @@ const About = () => {
                 <div className="relative z-10 h-full flex items-center">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                         <div className="max-w-lg">
-                            <p className="text-gold font-medium mb-2 text-lg">About Us</p>
+                            <p className="text-white font-medium mb-2 text-lg">About Us</p>
                             <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
                                 <span className="inline-block bg-sage-600/90 px-4 py-1 rounded-md">Passionate about</span>
                                 <br />

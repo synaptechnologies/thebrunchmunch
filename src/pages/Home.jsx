@@ -74,28 +74,28 @@ const Home = () => {
             role: "Event Planner",
             rating: 5,
             text: "The Brunch Munch catered our corporate event and exceeded all expectations. The presentation was stunning and the food was absolutely delicious!",
-            image: "https://ui-avatars.com/api/?name=Akua+Mensah&background=6B8F71&color=fff&size=200"
+            image: "/images/ccustomer1.png"
         },
         {
             name: "Kwame Osei",
             role: "Wedding Client",
             rating: 5,
             text: "Our wedding guests are still talking about the amazing breakfast baskets. Professional service from start to finish. Highly recommend!",
-            image: "https://ui-avatars.com/api/?name=Kwame+Osei&background=6B8F71&color=fff&size=200"
+            image: "/images/ccustomer3.png"
         },
         {
             name: "Ama Boateng",
             role: "Birthday Celebration",
             rating: 4.5,
             text: "The custom cake and party platter were a huge hit at my daughter's birthday. Everything was fresh, beautifully packaged, and tasted incredible!",
-            image: "https://ui-avatars.com/api/?name=Ama+Boateng&background=6B8F71&color=fff&size=200"
+            image: "/images/ccustomer2.png"
         },
         {
             name: "Michael Adjei",
             role: "Corporate Client",
             rating: 5,
             text: "We order from The Brunch Munch every week for our office meetings. Consistent quality, on-time delivery, and amazing customer service!",
-            image: "https://ui-avatars.com/api/?name=Michael+Adjei&background=6B8F71&color=fff&size=200"
+            image: "/images/ccustomer4.png"
         }
     ]
 
@@ -307,7 +307,7 @@ const Home = () => {
                                     <img
                                         src={review.image}
                                         alt={review.name}
-                                        className="w-12 h-12 rounded-full"
+                                        className="w-14 h-14 rounded-full"
                                     />
                                     <div>
                                         <h4 className="font-semibold text-charcoal">{review.name}</h4>

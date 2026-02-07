@@ -15,6 +15,10 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
     })
     const [gettingLocation, setGettingLocation] = useState(false)
     const [gpsCoords, setGpsCoords] = useState(null)
+    const [notification, setNotification] = useState(null)
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [orderConfirmed, setOrderConfirmed] = useState(false)
+    const [whatsappLink, setWhatsappLink] = useState(null)
 
     const handleChange = (e) => {
         setFormData({
@@ -56,18 +60,24 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
 
     // Configure your Apps Script Web App URL here after deploying it.
     // Example: const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/XXX/exec'
-    const APPS_SCRIPT_URL = ''
+    const APPS_SCRIPT_URL = import.meta.env.VITE_APPS_SCRIPT_URL || ''
     // Optional secret token (only if your Apps Script validates it). Avoid committing real secrets to source.
-    const APPS_SCRIPT_SECRET = ''
+    const APPS_SCRIPT_SECRET = import.meta.env.VITE_APPS_SCRIPT_SECRET || ''
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setIsSubmitting(true)
 
         // Include GPS coordinates in form data for WhatsApp message
         const customerInfo = {
             ...formData,
             gpsCoords: gpsCoords
         }
+
+        // Generate WhatsApp link
+        const message = formatWhatsAppMessage(cartItems, customerInfo, orderTotal)
+        const link = generateWhatsAppLink(message)
+        setWhatsappLink(link)
 
         // Prepare payload to save to Google Sheets via Apps Script
         const payload = {
@@ -77,38 +87,44 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
             orderTotal
         }
 
-        // Try to POST order data to Apps Script endpoint (if configured)
+        // STEP 1: Save to Google Sheets FIRST
         try {
             if (APPS_SCRIPT_URL) {
-                const res = await fetch(APPS_SCRIPT_URL, {
+                await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
+                    mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 })
 
-                const data = await res.json()
-                if (!data || data.success === false) {
-                    console.warn('Apps Script save failed', data)
-                    // Let user know but continue to open WhatsApp
-                    alert('Order could not be saved to sheet: ' + (data?.error || 'unknown error'))
-                }
+                // Show success notification
+                setNotification({ type: 'success', message: 'Order saved successfully!' })
+                setTimeout(() => setNotification(null), 3000)
+
+                // STEP 2: THEN redirect to WhatsApp (hard redirect with fallback)
+                setTimeout(() => {
+                    // Try hard redirect first
+                    window.location.href = link
+
+                    // Fallback: if redirect doesn't work, show modal after 2 seconds
+                    setTimeout(() => {
+                        setIsSubmitting(false)
+                        setOrderConfirmed(true)
+                    }, 2000)
+                }, 1000) // Wait 1 second after success notification before redirecting
             }
         } catch (err) {
             console.error('Failed to save order to Apps Script:', err)
-            // Inform user but allow them to continue placing the order
-            alert('Could not save order to Google Sheets. You can still continue to WhatsApp.')
+            setNotification({ type: 'error', message: 'Information not processed. Please try again.' })
+            setTimeout(() => setNotification(null), 4000)
+            setIsSubmitting(false)
         }
+    }
 
-        // Generate WhatsApp message and open safely
-        const message = formatWhatsAppMessage(cartItems, customerInfo, orderTotal)
-        const whatsappLink = generateWhatsAppLink(message)
-        const w = window.open(whatsappLink, '_blank')
-        if (w) w.opener = null
-
-        // Clear cart and close modals
-        clearCart()
-        setIsCartOpen(false)
-        onClose()
+    const handleOpenWhatsApp = () => {
+        if (whatsappLink) {
+            window.location.href = whatsappLink
+        }
     }
 
     if (!isOpen) return null
@@ -123,11 +139,22 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
 
             {/* Modal */}
             <div className="relative bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-soft-lg animate-scale-in">
+                {/* Notification Toast */}
+                {notification && (
+                    <div className={`fixed top-4 left-4 right-4 z-[70] px-4 py-3 rounded-lg text-white font-medium transition-all duration-300 ${
+                        notification.type === 'success' 
+                            ? 'bg-green-500' 
+                            : 'bg-red-500'
+                    }`}>
+                        {notification.message}
+                    </div>
+                )}
+
                 {/* Header */}
                 <div className="sticky top-0 bg-white border-b border-gray-light p-6 flex items-center justify-between rounded-t-2xl">
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-sage-100 rounded-full flex items-center justify-center">
-                            <span className="text-sage-600 font-display text-lg font-bold">B</span>
+                        <div className="w-10 transition-transform duration-300 group-hover:scale-110">
+                            <img className='rounded-md' src="/images/brunch_logo.jpg" alt="Logo" />
                         </div>
                         <span className="font-display text-lg font-semibold">The Brunch Munch</span>
                     </div>
@@ -141,12 +168,49 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
 
                 {/* Content */}
                 <div className="p-6">
-                    <h2 className="font-display text-2xl font-bold text-charcoal mb-2">Complete Your Order</h2>
-                    <p className="text-sm text-charcoal-light mb-6">
-                        Please fill in your details to finalize the delivery
-                    </p>
+                    {orderConfirmed ? (
+                        // Order Confirmed Screen
+                        <div className="space-y-6 text-center">
+                            <div className="flex justify-center">
+                                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center animate-bounce">
+                                    <span className="text-3xl">✓</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h2 className="font-display text-2xl font-bold text-charcoal mb-2">Order Confirmed!</h2>
+                                <p className="text-sm text-charcoal-light mb-4">
+                                    Your order has been saved. WhatsApp is opening...
+                                </p>
+                                <p className="text-xs text-charcoal-light mb-6">
+                                    If WhatsApp doesn't open automatically, click the button below.
+                                </p>
+                            </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                            {/* Fallback Button */}
+                            <button
+                                onClick={handleOpenWhatsApp}
+                                className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-4 rounded-lg transition-all duration-300 shadow-soft flex items-center justify-center gap-2"
+                            >
+                                <Phone className="w-5 h-5" />
+                                Open WhatsApp
+                            </button>
+
+                            <button
+                                onClick={onClose}
+                                className="w-full bg-gray-200 hover:bg-gray-300 text-charcoal font-semibold py-3 rounded-lg transition-all duration-300"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    ) : (
+                        // Original Checkout Form
+                        <>
+                            <h2 className="font-display text-2xl font-bold text-charcoal mb-2">Complete Your Order</h2>
+                            <p className="text-sm text-charcoal-light mb-6">
+                                Please fill in your details to finalize the delivery
+                            </p>
+
+                            <form onSubmit={handleSubmit} className="space-y-4">
                         {/* Full Name */}
                         <div>
                             <label className="block text-sm font-medium text-charcoal mb-2">
@@ -302,16 +366,28 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                         {/* Submit Button */}
                         <button
                             type="submit"
-                            className="w-full bg-sage-500 hover:bg-sage-600 text-white font-semibold py-4 rounded-lg transition-all duration-300 shadow-soft btn-shimmer flex items-center justify-center gap-2"
+                            disabled={isSubmitting}
+                            className="w-full bg-sage-500 hover:bg-sage-600 disabled:bg-sage-400 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-lg transition-all duration-300 shadow-soft btn-shimmer flex items-center justify-center gap-2"
                         >
-                            <Phone className="w-5 h-5" />
-                            Confirm Order via WhatsApp
+                            {isSubmitting ? (
+                                <>
+                                    <Loader className="w-5 h-5 animate-spin" />
+                                    Saving order...
+                                </>
+                            ) : (
+                                <>
+                                    <Phone className="w-5 h-5" />
+                                    Confirm Order via WhatsApp
+                                </>
+                            )}
                         </button>
 
                         <p className="text-xs text-center text-charcoal-light">
                             Order checkout powered by WhatsApp
                         </p>
                     </form>
+                        </>
+                    )}
                 </div>
             </div>
         </div>

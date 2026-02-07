@@ -199,7 +199,7 @@ const About = () => {
                             href={brandInfo.whatsappLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-3 px-8 py-4 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors duration-200"
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-sage-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors duration-200"
                         >
                             <MessageCircle className="w-5 h-5" />
                             Chat with Us on WhatsApp

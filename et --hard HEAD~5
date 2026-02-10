@@ -1,0 +1,21 @@
+[33m08ecd1e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to HEAD~5
+[33m18c06ac[m HEAD@{1}: reset: moving to main~5
+[33m79e32b3[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{2}: commit: Add 'Item Names' column to order sheet and include item names in order data
+[33mf6fd67c[m HEAD@{3}: commit: Add itemNames to order submission in CheckoutModal
+[33m833f467[m HEAD@{4}: pull --tags origin main: Merge made by the 'ort' strategy.
+[33mdd312d4[m HEAD@{5}: commit: Add Instagram link to About page and improve layout
+[33mc3776bf[m HEAD@{6}: commit: header pages colour improvement
+[33m18c06ac[m HEAD@{7}: pull: Fast-forward
+[33m166dd9d[m HEAD@{8}: commit: Add WhatsApp link generation and improve order submission flow
+[33ma9320f2[m HEAD@{9}: commit: Refactor code structure for improved readability and maintainability
+[33m4fcfa7b[m HEAD@{10}: pull --tags origin main: Fast-forward
+[33m568f3aa[m HEAD@{11}: commit: added pitch deck and detailed pitch documents
+[33m08ecd1e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{12}: commit: changes made to the Home page layout and styling.
+[33m28435d9[m HEAD@{13}: pull --tags origin main: Merge made by the 'ort' strategy.
+[33mddfbfb3[m HEAD@{14}: commit: Added Carousel Chef's special and fixed events we cater for height
+[33me098dfe[m HEAD@{15}: commit: updated catering page
+[33mf361462[m HEAD@{16}: commit (merge): Merge branch 'main' of https://github.com/synaptechnologies/thebrunchmunch
+[33m7cda7d1[m HEAD@{17}: commit: chnaged some esential things
+[33m0600365[m HEAD@{18}: commit: minor fixes
+[33ma963945[m HEAD@{19}: Branch: renamed refs/heads/master to refs/heads/main
+[33ma963945[m HEAD@{21}: commit (initial): first commit

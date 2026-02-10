@@ -29,6 +29,7 @@ function doPost(e) {
         'Time',
         'Special Requests',
         'Items (JSON)',
+        'Item Names',
         'Subtotal',
         'Delivery Fee',
         'Tax',
@@ -42,6 +43,7 @@ function doPost(e) {
     const customer = payload.customer || {};
     const itemsJson = JSON.stringify(payload.items || []);
     const orderTotal = payload.orderTotal || {};
+    const simpleItemString = (payload.items || []).map(item => item.name).join(", ");
 
     const row = [
       new Date().toISOString(),
@@ -54,6 +56,7 @@ function doPost(e) {
       customer.time || '',
       customer.specialRequests || '',
       itemsJson,
+      simpleItemString,
       orderTotal.subtotal || '',
       orderTotal.deliveryFee || '',
       orderTotal.tax || '',

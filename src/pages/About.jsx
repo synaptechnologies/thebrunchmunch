@@ -1,5 +1,6 @@
 import { MapPin, Phone, Mail, Instagram, Clock, Heart, Award, Users, Utensils, MessageCircle } from 'lucide-react'
 import Button from '../components/ui/Button'
+import { Link } from 'react-router-dom'
 import data from '../data/data.json'
 
 const About = () => {
@@ -177,13 +178,15 @@ const About = () => {
                             </a>
                         </div>
 
-                        <div className="reveal bg-white rounded-xl p-6 text-center shadow-soft">
-                            <div className="w-14 h-14 bg-sage-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Instagram className="w-6 h-6" />
+                        <Link to="https://www.instagram.com/the_brunch_munch/?hl=en" target="_blank" rel="noopener noreferrer" className="reveal">
+                            <div className="reveal bg-white rounded-xl p-6 text-center shadow-soft">
+                                <div className="w-14 h-14 bg-sage-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <Instagram className="w-6 h-6" />
+                                </div>
+                                <h3 className="font-display text-lg font-bold text-charcoal mb-2">Instagram</h3>
+                                <p className="text-sage-600 text-sm font-medium">{brandInfo.instagram}</p>
                             </div>
-                            <h3 className="font-display text-lg font-bold text-charcoal mb-2">Instagram</h3>
-                            <p className="text-sage-600 text-sm font-medium">{brandInfo.instagram}</p>
-                        </div>
+                        </Link>
 
                         <div className="reveal bg-white rounded-xl p-6 text-center shadow-soft">
                             <div className="w-14 h-14 bg-sage-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">

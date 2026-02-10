@@ -119,10 +119,6 @@ const Cart = () => {
                                 <span className="font-semibold">{formatPrice(orderTotal.subtotal)}</span>
                             </div>
                             <div className="flex justify-between text-sm">
-                                <span className="text-charcoal-light">Delivery Fee</span>
-                                <span className="font-semibold">{formatPrice(orderTotal.deliveryFee)}</span>
-                            </div>
-                            <div className="flex justify-between text-sm">
                                 <span className="text-charcoal-light">Tax</span>
                                 <span className="font-semibold">{formatPrice(orderTotal.tax)}</span>
                             </div>

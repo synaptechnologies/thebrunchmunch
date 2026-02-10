@@ -146,7 +146,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                 }, 1000) // Wait 1 second after success notification before redirecting
             }
         } catch (err) {
-            console.error('Failed to save order to Apps Script:', err)
+            console.error('Failed to save order', err)
             setNotification({ type: 'error', message: 'Information not processed. Please try again.' })
             setTimeout(() => setNotification(null), 4000)
             setIsSubmitting(false)
@@ -170,7 +170,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
             ></div>
 
             {/* Modal */}
-            <div className="relative bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-soft-lg animate-scale-in">
+            <div className="relative bg-white rounded-2xl max-w-md w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-soft-lg animate-scale-in">
                 {/* Notification Toast */}
                 {notification && (
                     <div className={`fixed top-4 left-4 right-4 z-[70] px-4 py-3 rounded-lg text-white font-medium transition-all duration-300 ${notification.type === 'success'
@@ -182,7 +182,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                 )}
 
                 {/* Header */}
-                <div className="sticky top-0 bg-white border-b border-gray-light p-6 flex items-center justify-between rounded-t-2xl">
+                <div className="sticky top-0 bg-white border-b border-gray-light p-4 sm:p-6 flex items-center justify-between rounded-t-2xl">
                     <div className="flex items-center gap-3">
                         <div className="w-10 transition-transform duration-300 group-hover:scale-110">
                             <img className='rounded-md' src="/images/brunch_logo.jpg" alt="Logo" />
@@ -198,21 +198,21 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                     {orderConfirmed ? (
                         // Order Confirmed Screen
-                        <div className="space-y-6 text-center">
+                        <div className="space-y-4 sm:space-y-6 text-center">
                             <div className="flex justify-center">
                                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center animate-bounce">
                                     <span className="text-3xl">✓</span>
                                 </div>
                             </div>
                             <div>
-                                <h2 className="font-display text-2xl font-bold text-charcoal mb-2">Order Confirmed!</h2>
-                                <p className="text-sm text-charcoal-light mb-4">
+                                <h2 className="font-display text-xl sm:text-2xl font-bold text-charcoal mb-2">Order Confirmed!</h2>
+                                <p className="text-xs sm:text-sm text-charcoal-light mb-3 sm:mb-4">
                                     Your order has been saved. WhatsApp is opening...
                                 </p>
-                                <p className="text-xs text-charcoal-light mb-6">
+                                <p className="text-xs text-charcoal-light mb-4 sm:mb-6">
                                     If WhatsApp doesn't open automatically, click the button below.
                                 </p>
                             </div>
@@ -220,7 +220,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                             {/* Fallback Button */}
                             <button
                                 onClick={handleOpenWhatsApp}
-                                className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-4 rounded-lg transition-all duration-300 shadow-soft flex items-center justify-center gap-2"
+                                className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 sm:py-4 rounded-lg transition-all duration-300 shadow-soft flex items-center justify-center gap-2 text-sm sm:text-base"
                             >
                                 <Phone className="w-5 h-5" />
                                 Open WhatsApp
@@ -228,7 +228,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
 
                             <button
                                 onClick={onClose}
-                                className="w-full bg-gray-200 hover:bg-gray-300 text-charcoal font-semibold py-3 rounded-lg transition-all duration-300"
+                                className="w-full bg-gray-200 hover:bg-gray-300 text-charcoal font-semibold py-2 sm:py-3 rounded-lg transition-all duration-300 text-sm sm:text-base"
                             >
                                 Close
                             </button>
@@ -236,15 +236,15 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                     ) : (
                         // Original Checkout Form
                         <>
-                            <h2 className="font-display text-2xl font-bold text-charcoal mb-2">Complete Your Order</h2>
-                            <p className="text-sm text-charcoal-light mb-6">
+                            <h2 className="font-display text-xl sm:text-2xl font-bold text-charcoal mb-2">Complete Your Order</h2>
+                            <p className="text-xs sm:text-sm text-charcoal-light mb-4 sm:mb-6">
                                 Please fill in your details to finalize the delivery
                             </p>
 
-                            <form onSubmit={handleSubmit} className="space-y-4">
+                            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                                 {/* Full Name */}
                                 <div>
-                                    <label className="block text-sm font-medium text-charcoal mb-2">
+                                    <label className="block text-xs sm:text-sm font-medium text-charcoal mb-1 sm:mb-2">
                                         Full Name
                                     </label>
                                     <input
@@ -254,14 +254,14 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                         onChange={handleChange}
                                         placeholder="Enter your full name"
                                         required
-                                        className="w-full px-4 py-3 border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
+                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
                                     />
                                 </div>
 
                                 {/* WhatsApp Number */}
                                 <div>
-                                    <label className="block text-sm font-medium text-charcoal mb-2 flex items-center gap-2">
-                                        <Phone className="w-4 h-4 text-sage-600" />
+                                    <label className="block text-xs sm:text-sm font-medium text-charcoal mb-1 sm:mb-2 flex items-center gap-2">
+                                        <Phone className="w-3 sm:w-4 h-3 sm:h-4 text-sage-600" />
                                         WhatsApp Number
                                     </label>
                                     <input
@@ -271,7 +271,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                         onChange={handleChange}
                                         placeholder="+233 (555) 000-0000"
                                         required
-                                        className="w-full px-4 py-3 border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
+                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
                                     />
                                 </div>
 
@@ -279,11 +279,11 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
 
                                 {/* Delivery Method */}
                                 <div>
-                                    <label className="block text-sm font-medium text-charcoal mb-3">
+                                    <label className="block text-xs sm:text-sm font-medium text-charcoal mb-2 sm:mb-3">
                                         How would you like to receive your order?
                                     </label>
-                                    <div className="space-y-2">
-                                        <label className="flex items-center gap-3 p-3 border border-gray-light rounded-lg cursor-pointer hover:bg-cream-50 transition-colors">
+                                    <div className="space-y-1.5 sm:space-y-2">
+                                        <label className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 border border-gray-light rounded-lg cursor-pointer hover:bg-cream-50 transition-colors">
                                             <input
                                                 type="radio"
                                                 name="deliveryMethod"
@@ -292,9 +292,9 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                                 onChange={handleChange}
                                                 className="w-4 h-4"
                                             />
-                                            <span className="font-medium text-charcoal">Pickup</span>
+                                            <span className="font-medium text-sm sm:text-base text-charcoal">Pickup</span>
                                         </label>
-                                        <label className="flex items-center gap-3 p-3 border border-gray-light rounded-lg cursor-pointer hover:bg-cream-50 transition-colors">
+                                        <label className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 border border-gray-light rounded-lg cursor-pointer hover:bg-cream-50 transition-colors">
                                             <input
                                                 type="radio"
                                                 name="deliveryMethod"
@@ -303,7 +303,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                                 onChange={handleChange}
                                                 className="w-4 h-4"
                                             />
-                                            <span className="font-medium text-charcoal">Delivery</span>
+                                            <span className="font-medium text-sm sm:text-base text-charcoal">Delivery</span>
                                         </label>
                                     </div>
                                 </div>
@@ -311,11 +311,11 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                 {/* Location - Only show if Delivery is selected */}
                                 {formData.deliveryMethod === 'Delivery' && (
                                     <div>
-                                        <label className="block text-sm font-medium text-charcoal mb-2 flex items-center gap-2">
-                                            <MapPin className="w-4 h-4 text-sage-600" />
+                                        <label className="block text-xs sm:text-sm font-medium text-charcoal mb-1 sm:mb-2 flex items-center gap-2">
+                                            <MapPin className="w-3 sm:w-4 h-3 sm:h-4 text-sage-600" />
                                             Delivery Location
                                         </label>
-                                        <div className="flex gap-2">
+                                        <div className="flex flex-col sm:flex-row gap-2">
                                             <input
                                                 type="text"
                                                 name="location"
@@ -323,13 +323,13 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                                 onChange={handleChange}
                                                 placeholder="Enter delivery address"
                                                 required={formData.deliveryMethod === 'Delivery'}
-                                                className="flex-1 px-4 py-3 border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
+                                                className="flex-1 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
                                             />
                                             <button
                                                 type="button"
                                                 onClick={handleGetLocation}
                                                 disabled={gettingLocation}
-                                                className="px-4 py-3 bg-sage-100 hover:bg-sage-200 text-sage-700 rounded-lg transition-all duration-200 flex items-center justify-center min-w-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
+                                                className="px-3 sm:px-4 py-2 sm:py-3 bg-sage-100 hover:bg-sage-200 text-sage-700 rounded-lg transition-all duration-200 flex items-center justify-center min-w-[44px] sm:min-w-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
                                                 title="Get my current location"
                                             >
                                                 {gettingLocation ? (
@@ -340,7 +340,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                             </button>
                                         </div>
                                         {gpsCoords && (
-                                            <p className="text-xs text-sage-600 mt-1 flex items-center gap-1">
+                                            <p className="text-xs text-sage-600 mt-1 sm:mt-2 flex items-center gap-1">
                                                 <span>📍</span>
                                                 <a
                                                     href={`https://maps.google.com/?q=${gpsCoords.lat},${gpsCoords.lng}`}
@@ -352,13 +352,13 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                                 </a>
                                             </p>
                                         )}
-                                    </div>
-                                )}
+                                        </div>
+                                    )}
 
                                 {/* Date and Time */}
-                                <div className="grid grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-charcoal mb-2">
+                                        <label className="block text-xs sm:text-sm font-medium text-charcoal mb-1 sm:mb-2">
                                             Date
                                         </label>
                                         <input
@@ -368,11 +368,11 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                             onChange={handleChange}
                                             required
                                             min={new Date().toISOString().split('T')[0]}
-                                            className="w-full px-4 py-3 border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
+                                            className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-charcoal mb-2">
+                                        <label className="block text-xs sm:text-sm font-medium text-charcoal mb-1 sm:mb-2">
                                             Time
                                         </label>
                                         <select
@@ -380,7 +380,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                             value={formData.time}
                                             onChange={handleChange}
                                             required
-                                            className="w-full px-4 py-3 border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
+                                            className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
                                         >
                                             <option value="">Select</option>
                                             <option value="ASAP">ASAP</option>
@@ -396,7 +396,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
 
                                 {/* Special Requests */}
                                 <div>
-                                    <label className="block text-sm font-medium text-charcoal mb-2">
+                                    <label className="block text-xs sm:text-sm font-medium text-charcoal mb-1 sm:mb-2">
                                         Special Requests / Allergies
                                     </label>
                                     <textarea
@@ -404,22 +404,22 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                         value={formData.specialRequests}
                                         onChange={handleChange}
                                         placeholder="e.g. No onions, sauce on the side..."
-                                        rows="3"
-                                        className="w-full px-4 py-3 border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200 resize-none"
+                                        rows="2"
+                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200 resize-none"
                                     ></textarea>
                                 </div>
 
                                 {/* How did you hear about us? (Only show if not answered before) */}
                                 {!localStorage.getItem('brunchMunch_heardFrom') && (
                                     <div>
-                                        <label className="block text-sm font-medium text-charcoal mb-2">
+                                        <label className="block text-xs sm:text-sm font-medium text-charcoal mb-1 sm:mb-2">
                                             How did you hear about us? (Optional)
                                         </label>
                                         <select
                                             name="hearAboutUs"
                                             value={formData.hearAboutUs || ''}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-3 border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
+                                            className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
                                         >
                                             <option value="">Select an option</option>
                                             <option value="Instagram">Instagram</option>
@@ -433,16 +433,16 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                 )}
 
                                 {/* Order Summary */}
-                                <div className="bg-cream-100 rounded-lg p-4 space-y-2">
-                                    <div className="flex justify-between text-sm">
+                                <div className="bg-cream-100 rounded-lg p-3 sm:p-4 space-y-1.5 sm:space-y-2">
+                                    <div className="flex justify-between text-xs sm:text-sm">
                                         <span>Subtotal ({cartItems.length} items)</span>
                                         <span className="font-semibold">{formatPrice(orderTotal.subtotal)}</span>
                                     </div>
-                                    <div className="flex justify-between text-sm">
+                                    <div className="flex justify-between text-xs sm:text-sm">
                                         <span>Tax</span>
                                         <span className="font-semibold">{formatPrice(orderTotal.tax)}</span>
                                     </div>
-                                    <div className="flex justify-between font-display font-bold text-lg pt-2 border-t border-sage-200">
+                                    <div className="flex justify-between font-display font-bold text-base sm:text-lg pt-2 border-t border-sage-200">
                                         <span>Total</span>
                                         <span className="text-sage-600">{formatPrice(orderTotal.total)}</span>
                                     </div>
@@ -452,22 +452,24 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="w-full bg-sage-500 hover:bg-sage-600 disabled:bg-sage-400 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-lg transition-all duration-300 shadow-soft btn-shimmer flex items-center justify-center gap-2"
+                                    className="w-full bg-sage-500 hover:bg-sage-600 disabled:bg-sage-400 disabled:cursor-not-allowed text-white font-semibold py-3 sm:py-4 rounded-lg transition-all duration-300 shadow-soft btn-shimmer flex items-center justify-center gap-2 text-sm sm:text-base"
                                 >
                                     {isSubmitting ? (
                                         <>
-                                            <Loader className="w-5 h-5 animate-spin" />
-                                            Saving order...
+                                            <Loader className="w-4 sm:w-5 h-4 sm:h-5 animate-spin" />
+                                            <span className="hidden sm:inline">Saving order...</span>
+                                            <span className="sm:hidden">Saving...</span>
                                         </>
                                     ) : (
                                         <>
-                                            <Phone className="w-5 h-5" />
-                                            Confirm Order via WhatsApp
+                                            <Phone className="w-4 sm:w-5 h-4 sm:h-5" />
+                                            <span className="hidden sm:inline">Confirm Order via WhatsApp</span>
+                                            <span className="sm:hidden">Confirm Order</span>
                                         </>
                                     )}
                                 </button>
 
-                                <p className="text-xs text-center text-charcoal-light">
+                                <p className="text-xs text-center text-charcoal-light leading-tight">
                                     Order checkout powered by WhatsApp
                                 </p>
                             </form>

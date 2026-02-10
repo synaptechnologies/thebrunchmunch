@@ -8,16 +8,16 @@ export default {
         extend: {
             colors: {
                 sage: {
-                    50: '#f6f8f7',
-                    100: '#e8f0ea',
-                    200: '#d1e1d5',
-                    300: '#a8c9b0',
-                    400: '#7dab88',
-                    500: '#6B8F71',  // Primary sage green
-                    600: '#556F5A',  // Darker sage
-                    700: '#445847',
-                    800: '#37473a',
-                    900: '#2e3a30',
+                    50:  '#fbf7f3', // very light cream (backgrounds)
+                    100: '#f3e8dc',
+                    200: '#e6d0b8',
+                    300: '#d8b68f',
+                    400: '#c79b66',
+                    500: '#b07f4a', // primary brown
+                    600: '#93673b',
+                    700: '#775230',
+                    800: '#5a3e25',
+                    900: '#3f2b19', // deep espresso
                 },
                 cream: {
                     50: '#FFFFFF',
@@ -34,7 +34,7 @@ export default {
             },
             fontFamily: {
                 display: ['"Playfair Display"', 'serif'],
-                body: ['Lato', 'sans-serif'],
+                body: [],
             },
             boxShadow: {
                 'soft': '0 4px 20px rgba(0, 0, 0, 0.06)',

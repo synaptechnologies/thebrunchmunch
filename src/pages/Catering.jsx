@@ -93,7 +93,7 @@ const Catering = () => {
                 <div className="relative z-10 h-full flex items-center">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                         <div className="max-w-xl">
-                            <p className="text-gold font-medium mb-2 text-lg">Catering Services</p>
+                            <p className="text-white font-medium mb-2 text-lg">Catering Services</p>
                             <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
                                 <span className="inline-block bg-sage-600/90 px-4 py-1 rounded-md">Making every event</span>
                                 <br />
@@ -252,7 +252,7 @@ const Catering = () => {
                                         href={brandInfo.whatsappLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-center gap-3 w-full py-4 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors duration-200"
+                                        className="flex items-center justify-center gap-3 w-full py-4 bg-sage-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors duration-200"
                                     >
                                         <MessageCircle className="w-5 h-5" />
                                         Chat on WhatsApp

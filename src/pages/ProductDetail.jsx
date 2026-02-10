@@ -90,6 +90,7 @@ const ProductDetail = () => {
     }
 
     return (
+        
         <div className="pt-20 min-h-screen bg-cream-100 relative">
             {/* Previous/Next Navigation Arrows */}
             {prevProduct && (

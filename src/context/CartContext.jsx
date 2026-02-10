@@ -12,9 +12,16 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState(() => {
-        // Load cart from localStorage on init
-        const savedCart = localStorage.getItem('brunchMunchCart')
-        return savedCart ? JSON.parse(savedCart) : []
+        // Load cart from localStorage on init (defensive parse)
+        try {
+            const savedCart = localStorage.getItem('brunchMunchCart')
+            return savedCart ? JSON.parse(savedCart) : []
+        } catch (err) {
+            console.error('Failed to parse saved cart from localStorage:', err)
+            // Clear corrupted data to avoid repeated errors
+            try { localStorage.removeItem('brunchMunchCart') } catch (e) {}
+            return []
+        }
     })
     const [isCartOpen, setIsCartOpen] = useState(false)
 
@@ -37,8 +44,9 @@ export const CartProvider = ({ children }) => {
                 updated[existingIndex].quantity += quantity
                 return updated
             } else {
-                // Add new item
-                return [...prev, { ...item, quantity, options, cartId: Date.now() }]
+                // Add new item with a safer short unique id
+                const cartId = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+                return [...prev, { ...item, quantity, options, cartId }]
             }
         })
         setIsCartOpen(true)

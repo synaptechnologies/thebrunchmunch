@@ -25,7 +25,8 @@ const MenuItemCard = ({ item, categoryId }) => {
                     alt={item.name}
                     className="image-zoom w-full h-full object-cover"
                     onError={(e) => {
-                        e.target.src = '/images/placeholder.jpg'
+                        e.currentTarget.onerror = null
+                        e.currentTarget.src = '/images/placeholder.jpg'
                     }}
                 />
                 {item.featured && (

@@ -1,5 +1,6 @@
 import { MapPin, Phone, Mail, Instagram, Clock, Heart, Award, Users, Utensils, MessageCircle } from 'lucide-react'
 import Button from '../components/ui/Button'
+import { Link } from 'react-router-dom'
 import data from '../data/data.json'
 
 const About = () => {
@@ -49,7 +50,7 @@ const About = () => {
                 <div className="relative z-10 h-full flex items-center">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                         <div className="max-w-lg">
-                            <p className="text-gold font-medium mb-2 text-lg">About Us</p>
+                            <p className="text-white font-medium mb-2 text-lg">About Us</p>
                             <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
                                 <span className="inline-block bg-sage-600/90 px-4 py-1 rounded-md">Passionate about</span>
                                 <br />
@@ -177,13 +178,15 @@ const About = () => {
                             </a>
                         </div>
 
-                        <div className="reveal bg-white rounded-xl p-6 text-center shadow-soft">
-                            <div className="w-14 h-14 bg-sage-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Instagram className="w-6 h-6" />
+                        <Link to="https://www.instagram.com/the_brunch_munch/?hl=en" target="_blank" rel="noopener noreferrer" className="reveal">
+                            <div className="reveal bg-white rounded-xl p-6 text-center shadow-soft">
+                                <div className="w-14 h-14 bg-sage-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <Instagram className="w-6 h-6" />
+                                </div>
+                                <h3 className="font-display text-lg font-bold text-charcoal mb-2">Instagram</h3>
+                                <p className="text-sage-600 text-sm font-medium">{brandInfo.instagram}</p>
                             </div>
-                            <h3 className="font-display text-lg font-bold text-charcoal mb-2">Instagram</h3>
-                            <p className="text-sage-600 text-sm font-medium">{brandInfo.instagram}</p>
-                        </div>
+                        </Link>
 
                         <div className="reveal bg-white rounded-xl p-6 text-center shadow-soft">
                             <div className="w-14 h-14 bg-sage-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
@@ -199,7 +202,7 @@ const About = () => {
                             href={brandInfo.whatsappLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-3 px-8 py-4 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors duration-200"
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-sage-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors duration-200"
                         >
                             <MessageCircle className="w-5 h-5" />
                             Chat with Us on WhatsApp

@@ -74,6 +74,9 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
             gpsCoords: gpsCoords
         }
 
+        // Extract only item names
+        const itemNames = cartItems.map(item => item.name)
+
         // Generate WhatsApp link
         const message = formatWhatsAppMessage(cartItems, customerInfo, orderTotal)
         const link = generateWhatsAppLink(message)

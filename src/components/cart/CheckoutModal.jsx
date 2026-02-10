@@ -1,6 +1,6 @@
 import { X, Phone, MapPin, Loader } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { formatWhatsAppMessage, generateWhatsAppLink, formatPrice } from '../../utils/formatters'
+import { formatWhatsAppMessage, generateWhatsAppLink, formatPrice, generateOrderId } from '../../utils/formatters'
 import { useCart } from '../../context/CartContext'
 
 const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
@@ -11,7 +11,8 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
         location: '',
         date: '',
         time: '',
-        specialRequests: ''
+        specialRequests: '',
+        deliveryMethod: 'Pickup' // Default to Pickup
     })
     const [gettingLocation, setGettingLocation] = useState(false)
     const [gpsCoords, setGpsCoords] = useState(null)
@@ -87,10 +88,11 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
             gpsCoords: gpsCoords
         }
 
-        // Extract only item names
-        const itemNames = cartItems.map(item => item.name)
-        // Generate WhatsApp link
-        const message = formatWhatsAppMessage(cartItems, customerInfo, orderTotal)
+        // Generate order ID upfront so it's the same for both backend and WhatsApp
+        const orderIdForThisOrder = generateOrderId()
+
+        // Generate WhatsApp link with the order ID
+        const message = formatWhatsAppMessage(cartItems, customerInfo, orderTotal, orderIdForThisOrder)
         const link = generateWhatsAppLink(message)
         setWhatsappLink(link)
 
@@ -105,19 +107,20 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
         // Prepare payload to save to Google Sheets via Apps Script
         const payload = {
             secret: APPS_SCRIPT_SECRET,
+            orderId: orderIdForThisOrder, // Send the order ID to backend
             customer: {
                 ...customerInfo,
                 hearAboutUs: formData.hearAboutUs // Add the new field
             },
             items: simplifiedItems, // Send cleaned up items
             orderTotal,
+            deliveryMethod: formData.deliveryMethod, // Send delivery method
             // formatted string for fallback/easy reading
             itemsSummary: simplifiedItems.map(i => `${i.name} (x${i.quantity})`).join(', ')
         }
 
         // STEP 1: Save to Google Sheets FIRST
         try {
-            // ... existing fetch logic ...
             if (APPS_SCRIPT_URL) {
                 await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
@@ -130,7 +133,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                 setNotification({ type: 'success', message: 'Order saved successfully!' })
                 setTimeout(() => setNotification(null), 3000)
 
-                // STEP 2: THEN redirect to WhatsApp (hard redirect with fallback)
+                // STEP 2: THEN redirect to WhatsApp (the order ID was generated upfront, so it matches)
                 setTimeout(() => {
                     // Try hard redirect first
                     window.location.href = link
@@ -272,50 +275,85 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                     />
                                 </div>
 
-                                {/* Delivery Location */}
+
+
+                                {/* Delivery Method */}
                                 <div>
-                                    <label className="block text-sm font-medium text-charcoal mb-2 flex items-center gap-2">
-                                        <MapPin className="w-4 h-4 text-sage-600" />
-                                        Delivery Location
+                                    <label className="block text-sm font-medium text-charcoal mb-3">
+                                        How would you like to receive your order?
                                     </label>
-                                    <div className="flex gap-2">
-                                        <input
-                                            type="text"
-                                            name="location"
-                                            value={formData.location}
-                                            onChange={handleChange}
-                                            placeholder="Enter delivery address"
-                                            required
-                                            className="flex-1 px-4 py-3 border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
-                                        />
-                                        <button
-                                            type="button"
-                                            onClick={handleGetLocation}
-                                            disabled={gettingLocation}
-                                            className="px-4 py-3 bg-sage-100 hover:bg-sage-200 text-sage-700 rounded-lg transition-all duration-200 flex items-center justify-center min-w-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
-                                            title="Get my current location"
-                                        >
-                                            {gettingLocation ? (
-                                                <Loader className="w-5 h-5 animate-spin" />
-                                            ) : (
-                                                <MapPin className="w-5 h-5" />
-                                            )}
-                                        </button>
+                                    <div className="space-y-2">
+                                        <label className="flex items-center gap-3 p-3 border border-gray-light rounded-lg cursor-pointer hover:bg-cream-50 transition-colors">
+                                            <input
+                                                type="radio"
+                                                name="deliveryMethod"
+                                                value="Pickup"
+                                                checked={formData.deliveryMethod === 'Pickup'}
+                                                onChange={handleChange}
+                                                className="w-4 h-4"
+                                            />
+                                            <span className="font-medium text-charcoal">Pickup</span>
+                                        </label>
+                                        <label className="flex items-center gap-3 p-3 border border-gray-light rounded-lg cursor-pointer hover:bg-cream-50 transition-colors">
+                                            <input
+                                                type="radio"
+                                                name="deliveryMethod"
+                                                value="Delivery"
+                                                checked={formData.deliveryMethod === 'Delivery'}
+                                                onChange={handleChange}
+                                                className="w-4 h-4"
+                                            />
+                                            <span className="font-medium text-charcoal">Delivery</span>
+                                        </label>
                                     </div>
-                                    {gpsCoords && (
-                                        <p className="text-xs text-sage-600 mt-1 flex items-center gap-1">
-                                            <span>📍</span>
-                                            <a
-                                                href={`https://maps.google.com/?q=${gpsCoords.lat},${gpsCoords.lng}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="underline hover:text-sage-700"
-                                            >
-                                                View on Google Maps
-                                            </a>
-                                        </p>
-                                    )}
                                 </div>
+
+                                {/* Location - Only show if Delivery is selected */}
+                                {formData.deliveryMethod === 'Delivery' && (
+                                    <div>
+                                        <label className="block text-sm font-medium text-charcoal mb-2 flex items-center gap-2">
+                                            <MapPin className="w-4 h-4 text-sage-600" />
+                                            Delivery Location
+                                        </label>
+                                        <div className="flex gap-2">
+                                            <input
+                                                type="text"
+                                                name="location"
+                                                value={formData.location}
+                                                onChange={handleChange}
+                                                placeholder="Enter delivery address"
+                                                required={formData.deliveryMethod === 'Delivery'}
+                                                className="flex-1 px-4 py-3 border border-gray-light rounded-lg focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={handleGetLocation}
+                                                disabled={gettingLocation}
+                                                className="px-4 py-3 bg-sage-100 hover:bg-sage-200 text-sage-700 rounded-lg transition-all duration-200 flex items-center justify-center min-w-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
+                                                title="Get my current location"
+                                            >
+                                                {gettingLocation ? (
+                                                    <Loader className="w-5 h-5 animate-spin" />
+                                                ) : (
+                                                    <MapPin className="w-5 h-5" />
+                                                )}
+                                            </button>
+                                        </div>
+                                        {gpsCoords && (
+                                            <p className="text-xs text-sage-600 mt-1 flex items-center gap-1">
+                                                <span>📍</span>
+                                                <a
+                                                    href={`https://maps.google.com/?q=${gpsCoords.lat},${gpsCoords.lng}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="underline hover:text-sage-700"
+                                                >
+                                                    View on Google Maps
+                                                </a>
+                                            </p>
+                                        )}
+                                    </div>
+                                )}
 
                                 {/* Date and Time */}
                                 <div className="grid grid-cols-2 gap-4">
@@ -399,10 +437,6 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
                                     <div className="flex justify-between text-sm">
                                         <span>Subtotal ({cartItems.length} items)</span>
                                         <span className="font-semibold">{formatPrice(orderTotal.subtotal)}</span>
-                                    </div>
-                                    <div className="flex justify-between text-sm">
-                                        <span>Delivery</span>
-                                        <span className="font-semibold">{formatPrice(orderTotal.deliveryFee)}</span>
                                     </div>
                                     <div className="flex justify-between text-sm">
                                         <span>Tax</span>

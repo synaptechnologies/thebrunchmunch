@@ -8,7 +8,10 @@ const Cart = () => {
     const { cartItems, isCartOpen, setIsCartOpen, updateQuantity, removeFromCart } = useCart()
     const [showCheckout, setShowCheckout] = useState(false)
 
-    const orderTotal = calculateOrderTotal(cartItems)
+    // Calculate subtotal only (no delivery fee in cart view)
+    const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0)
+    const tax = subtotal * 0.02
+    const orderTotal = { subtotal, deliveryFee: 0, tax, total: subtotal + tax }
 
     const handleCheckout = () => {
         setShowCheckout(true)

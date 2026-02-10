@@ -47,11 +47,12 @@ function handleRequest(e) {
       'Delivery Time',     // Column I
       'Items Ordered',     // Column J: Human readable string
       'Special Requests',  // Column K
-      'Total Amount',      // Column L
-      'Delivery Fee',      // Column M
-      'Payment Status',    // Column N (Manually updated usually)
-      'Heard From',        // Column O: Marketing source
-      'Raw Data (Debug)'   // Column P: JSON dump (Hidden/Optional)
+      'Delivery Method',   // Column L: Pickup or Delivery
+      'Total Amount',      // Column M
+      'Delivery Fee',      // Column N
+      'Payment Status',    // Column O (Manually updated usually)
+      'Heard From',        // Column P: Marketing source
+      'Raw Data (Debug)'   // Column Q: JSON dump (Hidden/Optional)
     ];
     sheet.appendRow(headers);
     sheet.setFrozenRows(1);
@@ -62,8 +63,8 @@ function handleRequest(e) {
   const orderTotal = payload.orderTotal || {};
   const items = payload.items || [];
   
-  // 1. Generate Robust Order ID (e.g., OR-20241025-ABCD)
-  const orderId = generateOrderId();
+  // 1. Use Order ID sent from frontend (frontend generates it to ensure consistency with WhatsApp)
+  const orderId = payload.orderId || generateOrderId(); // fallback to generate if missing
   
   // 2. Combine GPS
   let gpsString = '';
@@ -90,6 +91,7 @@ function handleRequest(e) {
     customer.time || '',
     itemsString,
     customer.specialRequests || '',
+    payload.deliveryMethod || 'Not specified', // Delivery Method
     orderTotal.total || 0,
     orderTotal.deliveryFee || 0,
     'Pending', // Payment Status (default)
@@ -127,6 +129,7 @@ function jsonResponse(obj, statusCode) {
 function testDoPost() {
   const testPayload = {
     secret: EXPECTED_SECRET,
+    orderId: 'ORD-20260210-TEST',
     customer: {
       name: 'Simulated User',
       phone: '0555555555',
@@ -135,13 +138,15 @@ function testDoPost() {
       date: '2026-02-14',
       time: '12:00 PM',
       specialRequests: 'Extra spicy',
-      hearAboutUs: 'Instagram'
+      hearAboutUs: 'Instagram',
+      deliveryMethod: 'Delivery'
     },
     items: [
       { name: 'Jollof Rice', quantity: 2, price: 50 },
       { name: 'Fried Chicken', quantity: 1, price: 30 }
     ],
     itemsSummary: 'Jollof Rice (x2), Fried Chicken (x1)',
+    deliveryMethod: 'Delivery',
     orderTotal: {
       subtotal: 130,
       deliveryFee: 20,

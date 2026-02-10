@@ -115,7 +115,16 @@ const ProductDetail = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     {/* Left: Image */}
                     <div className="reveal-left">
-                        <div className="bg-white rounded-2xl overflow-hidden shadow-soft sticky top-32">
+                        <div className="bg-white rounded-2xl overflow-hidden shadow-soft sticky top-32 relative">
+                            {/* Back to Menu Button */}
+                            <button
+                                onClick={() => navigate('/menu')}
+                                className="absolute top-4 left-4 z-20 flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm text-charcoal rounded-full shadow-soft hover:bg-white hover:shadow-soft-lg transition-all duration-200 group"
+                                title="Back to Menu"
+                            >
+                                <ChevronLeft className="w-5 h-5 text-charcoal group-hover:text-sage-600" />
+                                <span className="text-sm font-medium hidden sm:inline">Menu</span>
+                            </button>
                             <div className="aspect-square bg-gray-100">
                                 <img
                                     src={product.image || '/images/placeholder.jpg'}

@@ -87,7 +87,8 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, orderTotal }) => {
             secret: APPS_SCRIPT_SECRET,
             customer: customerInfo,
             items: cartItems,
-            orderTotal
+            orderTotal,
+            itemNames :itemNames,
         }
 
         // STEP 1: Save to Google Sheets FIRST
